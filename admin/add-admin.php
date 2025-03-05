@@ -10,7 +10,7 @@
 
         } ?>
         <br><br>
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <table class="tbl-30">
                 <tr>
                     <td>Full Name :</td>
