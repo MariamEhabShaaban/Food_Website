@@ -51,8 +51,8 @@ require 'partials/menu.php';
 <?php require "partials/footer.php" ?>
 <?php
 if (isset($_POST["update"])) {
-    $full_name = $_POST['full-name'];
-    $user_name = $_POST['username'];
+    $full_name = mysqli_real_escape_string( $connect,$_POST['full-name']);
+    $user_name = mysqli_real_escape_string( $connect,$_POST['username']);
     $sql = "UPDATE admin SET full_name =? ,username=? WHERE id=?";
     $stm = $connect->prepare($sql) or die(mysqli_error($connect));
     $stm->bind_param("ssi", $full_name, $user_name, $id);

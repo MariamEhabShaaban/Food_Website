@@ -61,10 +61,10 @@ require_once 'partials/menu.php';
 
 <?php
 if (isset($_POST['add-category'])) {
-    $title = $_POST['title'];
+    $title = mysqli_real_escape_string( $connect,$_POST['title']);
     $featured = "No";
     if (isset($_POST['featured'])) {
-        $featured = $_POST['featured'];
+        $featured = mysqli_real_escape_string( $connect,$_POST['featured']);
     }
 
 
@@ -72,7 +72,7 @@ if (isset($_POST['add-category'])) {
 
     $active = "No";
     if (isset($_POST['active'])) {
-        $active = $_POST['active'];
+        $active = mysqli_real_escape_string( $connect,$_POST['active']);
     }
     // image is selected or not
     $image_name = "";
@@ -81,7 +81,7 @@ if (isset($_POST['add-category'])) {
         // to upload image we need image name and      source , destination
        
 
-        $image_name = $_FILES['image']['name'];
+        $image_name = mysqli_real_escape_string( $connect,$_FILES['image']['name']);
 
         $ext = explode('.', $image_name);
 
@@ -93,7 +93,7 @@ if (isset($_POST['add-category'])) {
 
         $image_name = "food_cat_" . rand(0, 1000) . "." . $ext;
 
-        $source_path = $_FILES['image']['tmp_name'];
+        $source_path = mysqli_real_escape_string( $connect,$_FILES['image']['tmp_name']);
 
         $dest_path = "../images/category/" . $image_name;
 

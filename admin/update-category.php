@@ -78,16 +78,16 @@
         </form>
         <?php
      if(isset($_POST['update-category'])){
-            $title=$_POST['title'];
-           $id=$_POST['id'];
-           $current_image=$_POST['current_image'];
-           $featured=$_POST['featured'];
-           $active=$_POST['active'];
+            $title=mysqli_real_escape_string( $connect,$_POST['title']);
+           $id=mysqli_real_escape_string( $connect,$_POST['id']);
+           $current_image=mysqli_real_escape_string( $connect,$_POST['current_image']);
+           $featured=mysqli_real_escape_string( $connect,$_POST['featured']);
+           $active=mysqli_real_escape_string( $connect,$_POST['active']);
          
            // Upload new image
           $image_name=$current_image;
           if(isset($_FILES['image']['name']) && !empty( $_FILES['image']['name'])){
-            $image_name=$_FILES['image']['name'];
+            $image_name=mysqli_real_escape_string( $connect,$_FILES['image']['name']);
             if($image_name!= ''){
                 $ext = explode('.', $image_name);
 

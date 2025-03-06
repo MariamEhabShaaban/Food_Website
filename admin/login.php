@@ -46,8 +46,8 @@
 
 <?php
 if(isset($_POST["login"])){
-    $username = $_POST["username"];
-    $password =md5( $_POST["password"]);
+    $username = mysqli_real_escape_string( $connect,$_POST["username"]);
+    $password =mysqli_real_escape_string( $connect,md5( $_POST["password"]));
 
     // check user is exist in database
     $sql = "SELECT * FROM admin WHERE password ='$password'  AND username='$username'";

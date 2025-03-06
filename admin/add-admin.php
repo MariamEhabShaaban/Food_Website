@@ -41,9 +41,9 @@
 
 if (isset($_POST["submit"])) {
     // get data from form
-    $full_name = $_POST["full-name"];
-    $user_name = $_POST["username"];
-    $pass = md5($_POST["password"]); //encryption
+    $full_name = mysqli_real_escape_string( $connect,$_POST["full-name"]);
+    $user_name =mysqli_real_escape_string( $connect, $_POST["username"]);
+    $pass = mysqli_real_escape_string( $connect,md5($_POST["password"])); //encryption
 
     //SQL Query to save data
     $sql = "INSERT INTO admin (`full_name`,`username`,`password`) VALUES (?,?,?)";

@@ -6,34 +6,59 @@
     <div class="warpper">
         <h1>DASHBOARD</h1>
         <div class="col-4 text-center">
-            <h1>5</h1>
+            <?php
+              $sql="SELECT * FROM category";
+              $result=mysqli_query($connect,$sql);
+              $count=mysqli_num_rows($result);
+            
+            ?>
+            <h1><?php echo $count?></h1>
             <br>
 
-            categories
+            Categories
 
         </div>
 
         <div class="col-4 text-center">
-            <h1>5</h1>
+            <?php
+              $sql="SELECT * FROM food";
+              $result=mysqli_query($connect,$sql);
+              $count=mysqli_num_rows($result);
+            
+            ?>
+            <h1><?php echo $count?></h1>
             <br>
 
-            categories
+            Foods
 
         </div>
 
         <div class="col-4 text-center">
-            <h1>5</h1>
+            <?php
+              $sql="SELECT * FROM `order`";
+              $result=mysqli_query($connect,$sql);
+              $count=mysqli_num_rows($result);
+            
+            ?>
+             <h1><?php echo $count?></h1>
             <br>
 
-            categories
+            Total Orders
 
         </div>
 
         <div class="col-4 text-center">
-            <h1>5</h1>
+             <?php
+              $sql="SELECT SUM(total) AS Total FROM `order` WHERE status='Delivered'";
+              $result=mysqli_query($connect,$sql);
+              $row=mysqli_fetch_array($result);
+              $revenue=$row['Total'];
+            
+            ?>
+            <h1>$<?php echo $revenue?></h1>
             <br>
 
-            categories
+            Revenue Generated
 
         </div>
         <div class="clear-fix"></div>

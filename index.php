@@ -4,7 +4,7 @@
     <section class="food-search text-center">
         <div class="container">
             
-            <form action="food-search.html" method="POST">
+            <form action="food-search.php" method="POST">
                 <input type="search" name="search" placeholder="Search for Food.." required>
                 <input type="submit" name="submit" value="Search" class="btn btn-primary">
             </form>
@@ -12,6 +12,17 @@
         </div>
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
+
+    <?php 
+
+    if(isset($_SESSION['order'])){
+        echo $_SESSION['order'];
+        unset($_SESSION['order']);
+    }
+
+
+
+    ?>
 
     <!-- CAtegories Section Starts Here -->
     <section class="categories">
@@ -29,7 +40,7 @@
                 $image_name=$row['image_name'];
             ?>
 
-            <a href="category-foods.html">
+            <a href="category-foods.php?category_id=<?php echo $id?>">
             <div class="box-3 float-container">
                 <?php
                 if($image_name==""){
@@ -37,7 +48,7 @@
                 }
                 else{
                 ?>
-                <img src="<?php echo SITEURL?>images/category/<?php echo $image_name?>" alt="Pizza" class="img-responsive img-curve">
+                <img src="<?php echo SITEURL?>images/category/<?php echo $image_name?>" alt="" class="img-responsive img-curve">
                 <?php }
                 ?>
 
@@ -94,7 +105,7 @@
                             <?php echo $description; ?>
                         </p>
                         <br>
-                        <a href="#" class="btn btn-primary">Order Now</a>
+                        <a href="order.php?food_id=<?php echo $id?>" class="btn btn-primary">Order Now</a>
                     </div>
                 </div>
 
